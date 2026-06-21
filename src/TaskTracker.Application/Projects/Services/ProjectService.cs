@@ -45,14 +45,10 @@ public class ProjectService : IProjectService
 
     public async Task<ProjectDto> GetByIdAsync(Guid id, CancellationToken ct = default)
     {
-        var project = await _projects.GetByIdWithTasksAsync(id, ct)
+        return await _projects.GetDtoByIdAsync(id, ct)
             ?? throw new NotFoundException(nameof(Project), id);
-        return ProjectDto.FromEntity(project);
     }
 
-    public async Task<IReadOnlyList<ProjectDto>> ListByOwnerAsync(Guid ownerId, CancellationToken ct = default)
-    {
-        var projects = await _projects.ListByOwnerAsync(ownerId, ct);
-        return projects.Select(ProjectDto.FromEntity).ToList();
-    }
+    public Task<IReadOnlyList<ProjectDto>> ListByOwnerAsync(Guid ownerId, CancellationToken ct = default)
+        => _projects.ListByOwnerAsync(ownerId, ct);
 }

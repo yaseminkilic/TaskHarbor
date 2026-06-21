@@ -64,7 +64,7 @@ secrets.json
 appsettings.*.local.json
 
 # Claude Code local settings
-.claude/
+# .claude/
 
 # OS
 Thumbs.db
@@ -74,5 +74,5 @@ $RECYCLE.BIN/
 .DS_Store
 
 # Custom
-doc/
+# docs/
 *.log

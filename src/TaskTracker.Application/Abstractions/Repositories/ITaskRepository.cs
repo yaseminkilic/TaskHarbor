@@ -12,6 +12,6 @@ public interface ITaskRepository
         CancellationToken ct = default);
     Task AddAsync(TaskItem task, CancellationToken ct = default);
     Task<Tag?> GetTagByNameAsync(string name, CancellationToken ct = default);
-    Task AddTagAsync(Tag tag, CancellationToken ct = default);
+    Task<Tag> GetOrCreateTagAsync(string name, CancellationToken ct = default);
     void Remove(TaskItem task);
 }

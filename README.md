@@ -1,5 +1,7 @@
 # TaskTracker
 
+![CI](https://github.com/peachnektari/tasktracker-net8/actions/workflows/ci.yml/badge.svg)
+
 A small **.NET 8 + EF Core + SQLite** sample project, built as a learning playground for
 modern testing scenarios. The use case is a minimal task-tracking API where users own
 projects, projects contain tasks, and tasks can be tagged.

@@ -125,13 +125,7 @@ public class TaskService : ITaskService
         var task = await _tasks.GetByIdWithTagsAsync(id, ct)
             ?? throw new NotFoundException(nameof(TaskItem), id);
 
-        var normalized = tagName.Trim().ToLowerInvariant();
-        var tag = await _tasks.GetTagByNameAsync(normalized, ct);
-        if (tag is null)
-        {
-            tag = new Tag(normalized);
-            await _tasks.AddTagAsync(tag, ct);
-        }
+        var tag = await _tasks.GetOrCreateTagAsync(tagName, ct);
 
         task.AddTag(tag);
         await _uow.SaveChangesAsync(ct);

@@ -73,6 +73,6 @@ public class UserEndpointsTests : IClassFixture<CustomWebApplicationFactory>, IA
 
         list.Should().NotBeNull();
         list!.Should().HaveCount(2);
-        list.Select(u => u.Email).Should().BeEquivalentTo(new[] { "a@example.com", "b@example.com" });
+        list!.Select(u => u.Email).Should().BeEquivalentTo(["a@example.com", "b@example.com"]);
     }
 }
